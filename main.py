@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+#https://randerson112358.medium.com/stock-price-prediction-using-python-machine-learning-e82a039ac2bb
+##
+
 os.system('python clean.py')
 os.system('python decision_tree.py')
 os.system('python lr_regress.py')
@@ -56,9 +59,7 @@ for i, row in workingMagData.iterrows():
 
 
 maxMagYear, maxMagnitude = zip(*maxMagPerYear.items())
-
 plt.scatter(maxMagYear, maxMagnitude, color='green', label='Earthquake Magnitude', s=10)
-
 
 plt.xlabel('Year')
 plt.ylabel('Magnitude')
