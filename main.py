@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
-#https://randerson112358.medium.com/stock-price-prediction-using-python-machine-learning-e82a039ac2bb
-##
+
 
 os.system('python clean.py')
 os.system('python decision_tree.py')
