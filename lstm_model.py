@@ -47,7 +47,7 @@ LSTM_model.add(LSTM(units=20, return_sequences=False))
 LSTM_model.add(Dense(units=1))
 
 LSTM_model.compile(optimizer='adam', loss='mean_squared_error')
-LSTM_model.fit(x_train, y_train, batch_size=32, epochs=5)
+LSTM_model.fit(x_train, y_train, batch_size=32, epochs=5, shuffle=False)
 
 test_data = scaled_data[training_data_len - 30:,: ]
 
@@ -63,24 +63,17 @@ x_test = np.reshape(x_test, (x_test.shape[0],x_test.shape[1],1))
 predictions = LSTM_model.predict(x_test) 
 predictions = scaler.inverse_transform(predictions)
 
-# rmse=np.sqrt(np.mean(((predictions- y_test)**2)))
-
-# print(rmse)
-
-# rollingMean = df[['Max magnitude']].rolling(6).mean()
-
-
 train = data[:training_data_len]
 valid = data[training_data_len:]
 valid['Predictions'] = predictions
 
 plt.figure(figsize=(16,8))
-plt.title('LSTM prediction for proceeding years highest magnitude')
-plt.xlabel('Date', fontsize=18)
+plt.title('LSTM prediction for annual highest magnitude')
+plt.xlabel('Year (starting from 1600)', fontsize=18)
 plt.ylabel('Max magnitude', fontsize=18)
 plt.plot(train['Max magnitude'])
 plt.plot(valid[['Max magnitude', 'Predictions']])
 plt.grid(True, axis='y')
-plt.margin(0)
+plt.margins(0)
 plt.legend(['Training data', 'Testing data', 'Predictions'], loc='lower right')
 plt.show()

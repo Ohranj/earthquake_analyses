@@ -1,9 +1,11 @@
+#All graphs can be run through running the main.py file
+
+
 import pandas as pd
 import seaborn as sb
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-
 
 
 os.system('python clean.py')
@@ -45,7 +47,7 @@ plt.show()
 
 
 
-# Graph max magnitude per year
+#Scatter plot for the changes in the max magnitude per year
 workingMagData = workingData.dropna(subset=['Magnitude'])
 
 maxMagPerYear = {}
